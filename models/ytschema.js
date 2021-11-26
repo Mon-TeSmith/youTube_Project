@@ -43,9 +43,9 @@ function validationOfReply(reply){
         return schema.validation(reply);        
 }
 
-exports.validateReply=validationOfReply;
+exports.validateReply = validationOfReply;
 exports.validatecomments =  validationOfComments;
 exports.replySchema = replySchema;
 exports.commentsSchema = commentsSchema;
-exports.Reply =Reply;
+exports.Reply = Reply;
 exports.Comment = Comment;
