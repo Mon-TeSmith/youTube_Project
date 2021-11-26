@@ -21,14 +21,15 @@ router.post("/",async (req,res) => {
         if (error)
         return res.status(400).send(error);
 
-        const product = new Product({
-            name: req.body.name,
-            description: req.body.description,
-            category: req.body.category,
-            price: req.body.price,
+        const comment = new Comment({
+            videoId:req.body.videoId,
+                text: req.body.text,
+                likes: req.body.likes,
+                dislikes: req.body.dislikes,
+                replies: req.body.replies,
         })
-         await product.save();
-         return res.send(product);
+         await comment.save();
+         return res.send(comment);
     }catch (ex){
         return res.status(500).send(`Internal Server Error:${ex}`);
     }
@@ -39,8 +40,8 @@ router.put("/:id", async (req, res) =>{
         const{error} = validate(req.body);
         if(error)return res.status(400).send(error);
 
-        const product = await Product.findByIdAndUpdate(
-            req.params.id,
+        const comment = await Comment.findByIdAndUpdate(
+            req.comment.id,
             {
                 name: req.body.name,
                 description: req.body.description,
@@ -49,11 +50,11 @@ router.put("/:id", async (req, res) =>{
             },
             {new: true}
         );
-    if(!product)
-        return res.status(400).send(`The product with id"${req.params.id}"does not exist.`);
+    if(!comment)
+        return res.status(400).send(`The comment with id"${req.params.id}"does not exist.`);
     
-        await product.save();
-        return res.send(product);
+        await comment.save();
+        return res.send(comment);
         }catch (ex){
         return res.status(500).send(`Internal Server Error:${ex}`)
     }
@@ -61,11 +62,11 @@ router.put("/:id", async (req, res) =>{
 
 router.delete("/:id", async (req, res) => {
     try{
-        const product = await Product.findByIdAndRemove(req.params.id);
+        const comment = await Comment.findByIdAndRemove(req.params.id);
 
-        if(!product)
-            return res.status(400).send(`The product with id" ${req.params.id}"does not exist.`);
-        return res.send(product);
+        if(!comment)
+            return res.status(400).send(`The comment with id" ${req.params.id}"does not exist.`);
+        return res.send(comment);
     } catch (ex) {
         return res.status(500).send(`Internal Server Error: ${ex}`);
     }
@@ -87,11 +88,11 @@ router.put("/:id", async (req, res) => {
             },
             {new: true}
         );
-        if(!comments)
-            return res.status(400).send(`The product with id"${req.params.id}"does not exist`);
+        if(!comment)
+            return res.status(400).send(`The comment with id"${req.params.id}"does not exist`);
 
             await comment.save();
-            return res.send(product);
+            return res.send(comment);
         }catch (ex){
             return res.status(500).send(`Internal Server Error: ${ex}`);
         }

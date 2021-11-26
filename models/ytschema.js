@@ -31,7 +31,7 @@ function validationOfComments(Comment){
         dislikes: Joi.number().required(),
         
     })
-        return schema.validation(comment);        
+        return schema.validate(Comment);        
 }
 
 function validationOfReply(reply){
@@ -40,12 +40,12 @@ function validationOfReply(reply){
         likes: Joi.number().required(),
         dislikes: Joi.number().required(),
     })
-        return schema.validation(reply);        
+        return schema.validate(reply);        
 }
 
 exports.validateReply=validationOfReply;
 exports.validatecomments =  validationOfComments;
 exports.replySchema = replySchema;
-exports.commentsSchema = commentsSchema;
+exports.commentSchema = commentSchema;
 exports.Reply =Reply;
 exports.Comment = Comment;
