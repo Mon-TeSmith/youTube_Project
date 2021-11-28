@@ -2,6 +2,7 @@ const mongoose =require("mongoose");
 const Joi = require('joi');
 const {replySchema} = require('./ytschema')
 const {commentSchema} = require('./ytschema')
+const router = express.Router();
 
 router.get("/:id",async (req,res) =>{
     try{
@@ -72,28 +73,30 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-router.put("/:id", async (req, res) => {
-    try{
-        const {error} = validate(req.body);
-        if (error) return res.status(400).send(error);
+// router.put("/:id", async (req, res) => {
+//     try{
+//         const {error} = validate(req.body);
+//         if (error) return res.status(400).send(error);
 
-        const comment = await Comment.findByIdAndUpdate(
-            req.params.id,
-            {
-                videoId:req.body.videoId,
-                text: req.body.text,
-                likes: req.body.likes,
-                dislikes: req.body.dislikes,
-                replies: req.body.replies,
-            },
-            {new: true}
-        );
-        if(!comment)
-            return res.status(400).send(`The comment with id"${req.params.id}"does not exist`);
+//         const comment = await Comment.findByIdAndUpdate(
+//             req.params.id,
+//             {
+//                 videoId:req.body.videoId,
+//                 text: req.body.text,
+//                 likes: req.body.likes,
+//                 dislikes: req.body.dislikes,
+//                 replies: req.body.replies,
+//             },
+//             {new: true}
+//         );
+//         if(!comment)
+//             return res.status(400).send(`The comment with id"${req.params.id}"does not exist`);
 
-            await comment.save();
-            return res.send(comment);
-        }catch (ex){
-            return res.status(500).send(`Internal Server Error: ${ex}`);
-        }
-});
+//             await comment.save();
+//             return res.send(comment);
+//         }catch (ex){
+//             return res.status(500).send(`Internal Server Error: ${ex}`);
+//         }
+// });
+
+module.exports = router;

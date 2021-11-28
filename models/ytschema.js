@@ -49,3 +49,6 @@ exports.replySchema = replySchema;
 exports.commentSchema = commentSchema;
 exports.Reply =Reply;
 exports.Comment = Comment;
+
+module.exports = replySchema;
+module.exports = commentSchema;
