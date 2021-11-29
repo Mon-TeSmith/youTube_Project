@@ -37,8 +37,8 @@ function validationOfComments(Comment){
 function validationOfReply(reply){
     const schema = Joi.object({
         text: Joi.string().required(),
-        likes: Joi.number().required(),
-        dislikes: Joi.number().required(),
+        likes: Joi.number(),
+        dislikes: Joi.number(),
     })
         return schema.validate(reply);        
 }

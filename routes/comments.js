@@ -56,7 +56,7 @@ router.put("/:commentId", async (req, res) => {
         }
 });
 
-router.post('/comments/commentId/:replyId', async (req,res) => {
+router.post('/:commentId/:replyId', async (req,res) => {
     try{
         const {error} = validateReply(req.body);
 
@@ -66,7 +66,7 @@ router.post('/comments/commentId/:replyId', async (req,res) => {
         
 
         const reply = new Reply({
-            replyId: req.body.replyId,
+            commentId: req.body.commentId,
             text: req.body.text,
         });
         
