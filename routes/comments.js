@@ -67,7 +67,7 @@ router.post('/:commentId/replies', async (req,res) => {
             text: req.body.text,
         });
 
-        comment.replies.push(comment);
+        comment.replies.push(reply);
         // 
          await comment.save();
          return res.send(reply);
