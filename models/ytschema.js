@@ -44,11 +44,6 @@ function validationOfReply(reply){
 }
 
 exports.validateReply = validationOfReply;
-exports.validatecomments =  validationOfComments;
-exports.replySchema = replySchema;
-exports.commentSchema = commentSchema;
+exports.validateComments =  validationOfComments;
 exports.Reply =Reply;
 exports.Comment = Comment;
-
-module.exports = replySchema;
-module.exports = commentSchema;

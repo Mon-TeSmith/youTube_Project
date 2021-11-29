@@ -4,7 +4,7 @@ const { func } = require("joi");
 
 function connectDB (){
     mongoose.connect(
-        config.get("mogoURI"),
+        config.get("mongoURI"),
         { useNewUrlParser: true , useUnifiedTopology: true})
         .then(() => console.log("Connect to MongoDB..."))
         .catch((err) => {
