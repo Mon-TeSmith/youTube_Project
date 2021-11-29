@@ -27,8 +27,8 @@ function validationOfComments(Comment){
     const schema = Joi.object({
         videoId: Joi.string().min(2).max(500).required(),
         text: Joi.string().required(),
-        likes: Joi.number().required(),
-        dislikes: Joi.number().required(),
+        likes: Joi.number(),
+        dislikes: Joi.number(),
         
     })
         return schema.validate(Comment);        
