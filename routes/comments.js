@@ -63,7 +63,7 @@ router.post('/:commentId/replies', async (req,res) => {
 
 
         const reply = new Reply({
-            commentId: req.body.commentId,
+            commentId: req.params.commentId,
             text: req.body.text,
         });
 
